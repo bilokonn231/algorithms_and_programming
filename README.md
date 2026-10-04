@@ -1,4 +1,4 @@
-# Types of Algorithms: Linear vs. Branched
+# Types of Algorithms
 
 An **algorithm** is a finite sequence of unambiguous instructions executed to solve a problem or perform a computation. 
 
