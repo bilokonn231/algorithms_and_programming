@@ -1,95 +1,106 @@
-Types of Algorithms: Branched and Linear
-Introduction
+# Types of Algorithms: Linear vs. Branched
 
-An algorithm is a finite sequence of clearly defined instructions used to solve a problem or complete a particular task. Algorithms are fundamental to computer science because they provide a logical and structured way to process information and obtain a desired result. Depending on how instructions are organized and how the program responds to different conditions, algorithms can be divided into several types.
+An **algorithm** is a finite sequence of unambiguous instructions executed to solve a problem or perform a computation. 
 
-Two basic types are linear algorithms and branched (conditional) algorithms. The main difference between them is the way in which instructions are executed. A linear algorithm follows instructions in a fixed order, while a branched algorithm can choose between different sequences of instructions depending on a condition.
+Algorithms are categorized primarily by their control flow—how instructions are structured and executed relative to dynamic conditions.
 
-Linear Algorithms
+---
 
-A linear algorithm is an algorithm in which all instructions are executed sequentially, one after another, from beginning to end. There are no alternative paths or conditions that change the order of execution.
+## 1. Linear Algorithms
 
-The general structure of a linear algorithm can be represented as:
+A **linear algorithm** executes instructions in a fixed, strictly sequential order from start to finish. It contains no decision points, jump statements, or alternative execution paths.
 
-Start
-  ↓
-Instruction 1
-  ↓
-Instruction 2
-  ↓
-Instruction 3
-  ↓
-Result
-  ↓
-End
+### Characteristics
+* **Execution Flow:** Sequential ($1 \rightarrow 2 \rightarrow 3$).
+* **Determinism:** Executes the exact same sequence of steps for every input.
+* **Complexity:** $O(1)$ structural complexity (no branching logic).
 
+### Control Flow Diagram
+```text
+[Start]
+   │
+   ▼
+[Instruction 1]
+   │
+   ▼
+[Instruction 2]
+   │
+   ▼
+[Instruction 3]
+   │
+   ▼
+[Output Result]
+   │
+   ▼
+[End]
+```
 
-For example, consider an algorithm for calculating the area of a rectangle:
+### Example: Rectangle Area Calculation
 
-Enter the length of the rectangle.
-
-Enter the width of the rectangle.
-
-Multiply the length by the width.
-
-Display the result.
-
-In pseudocode, it can be written as:
-
+#### Pseudocode
+```pascal
 BEGIN
-    Read length
-    Read width
-    area = length * width
+    Input length
+    Input width
+    area <- length * width
     Output area
 END
+```
 
+---
 
-Each instruction is performed exactly in the specified order. The algorithm does not need to make a decision based on a condition.
+## 2. Branched (Conditional) Algorithms
 
-Linear algorithms are useful for simple tasks where the same sequence of operations is required every time. They are often used as basic building blocks for more complex algorithms.
+A **branched algorithm** evaluates one or more conditional expressions to determine which branch of execution to follow. 
 
-Branched Algorithms
+### Characteristics
+* **Execution Flow:** Dynamic and non-linear; depends on state evaluation.
+* **Flexibility:** Adapts operations based on variable inputs or runtime states.
+* **Constructs:** Implemented via conditional statements (`IF-THEN-ELSE`, `SWITCH-CASE`).
 
-A branched algorithm, also called a conditional algorithm, contains one or more conditions that determine which instructions should be executed. Instead of following one fixed path, the algorithm can choose between different paths depending on the input or current situation.
+### Control Flow Diagram
+```text
+         [Start]
+            │
+            ▼
+     /  Condition?  \
+    /                \
+  (True)           (False)
+    │                 │
+    ▼                 ▼
+[Branch A]        [Branch B]
+    │                 │
+    └────────┬────────┘
+             │
+             ▼
+       [Output Result]
+             │
+             ▼
+           [End]
+```
 
-A simple branched algorithm can be represented as:
+### Example: Sign Determination
 
-          Condition?
-          /        \
-       Yes          No
-        ↓            ↓
- Instruction A   Instruction B
-        \            /
-         ↓          ↓
-            Result
-
-
-For example, an algorithm can determine whether a number is positive or negative:
-
+#### Pseudocode
+```pascal
 BEGIN
-    Read number
-
+    Input number
     IF number >= 0 THEN
-        Output "The number is positive or zero"
+        Output "Positive or Zero"
     ELSE
-        Output "The number is negative"
+        Output "Negative"
     END IF
 END
+```
 
+---
 
-In this case, the result depends on the value entered by the user. If the number is greater than or equal to zero, the first branch is executed. Otherwise, the second branch is executed.
+## 3. Structural Comparison
 
-Branched algorithms are commonly implemented using conditional statements such as if, else, and else if. They are especially useful when a program needs to react differently to different conditions.
-
-Comparison of Linear and Branched Algorithms
-
-The main difference between linear and branched algorithms is the presence of alternative execution paths.
-
-Feature	Linear Algorithm	Branched Algorithm
-Execution order	Fixed	Depends on conditions
-Alternative paths	No	Yes
-Main structures	Sequential instructions	Conditional statements
-Complexity	Usually simpler	Usually more complex
-Example	Calculating rectangle area	Checking whether a number is positive
-
-A linear algorithm is appropriate when every input should be processed using the same sequence of operations. A branched algorithm is more appropriate when the result or required actions depend on certain conditions.
+| Feature | Linear Algorithm | Branched Algorithm |
+| :--- | :--- | :--- |
+| **Execution Order** | Strictly sequential | Conditional / Non-linear |
+| **Alternative Paths** | None ($1$ path) | Multiple ($\ge 2$ paths) |
+| **Control Structures** | Sequential statements | `IF`, `THEN`, `ELSE`, `SWITCH` |
+| **Path Complexity** | Constant | Variable based on conditions |
+| **Primary Use Case** | Fixed calculations, formulas | Validation, decision logic |
